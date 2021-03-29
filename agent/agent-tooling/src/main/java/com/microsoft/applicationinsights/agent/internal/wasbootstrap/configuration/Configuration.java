@@ -101,6 +101,7 @@ public class Configuration {
 
     public static class Instrumentation {
 
+        public AzureSdkInstrumentation azureSdk = new AzureSdkInstrumentation();
         public CassandraInstrumentation cassandra = new CassandraInstrumentation();
         public JdbcInstrumentation jdbc = new JdbcInstrumentation();
         public JmsInstrumentation jms = new JmsInstrumentation();
@@ -114,6 +115,10 @@ public class Configuration {
 
     public static class CassandraInstrumentation {
         public boolean enabled = true;
+    }
+
+    public static class AzureSdkInstrumentation {
+        public boolean enabled = false;
     }
 
     public static class JdbcInstrumentation {

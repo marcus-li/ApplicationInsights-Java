@@ -156,20 +156,22 @@ public class ConfigurationBuilder {
     }
 
     private static void loadInstrumentationEnabledEnvVars(Configuration config) {
-        config.instrumentation.micrometer.enabled =
-                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED", config.instrumentation.micrometer.enabled);
-        config.instrumentation.jdbc.enabled =
-                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED", config.instrumentation.jdbc.enabled);
-        config.instrumentation.redis.enabled =
-                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED", config.instrumentation.redis.enabled);
-        config.instrumentation.kafka.enabled =
-                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED", config.instrumentation.kafka.enabled);
-        config.instrumentation.jms.enabled =
-                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED", config.instrumentation.jms.enabled);
-        config.instrumentation.mongo.enabled =
-                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED", config.instrumentation.mongo.enabled);
+        config.instrumentation.azureSdk.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_AZURE_SDK_ENABLED", config.instrumentation.azureSdk.enabled);
         config.instrumentation.cassandra.enabled =
                 overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED", config.instrumentation.cassandra.enabled);
+        config.instrumentation.jdbc.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED", config.instrumentation.jdbc.enabled);
+        config.instrumentation.jms.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED", config.instrumentation.jms.enabled);
+        config.instrumentation.kafka.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED", config.instrumentation.kafka.enabled);
+        config.instrumentation.micrometer.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED", config.instrumentation.micrometer.enabled);
+        config.instrumentation.mongo.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED", config.instrumentation.mongo.enabled);
+        config.instrumentation.redis.enabled =
+                overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED", config.instrumentation.redis.enabled);
         config.instrumentation.springScheduling.enabled =
                 overlayWithEnvVar("APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED", config.instrumentation.springScheduling.enabled);
     }

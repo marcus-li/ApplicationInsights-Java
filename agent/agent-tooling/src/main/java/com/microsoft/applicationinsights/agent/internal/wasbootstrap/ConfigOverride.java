@@ -16,28 +16,31 @@ class ConfigOverride {
         Map<String, String> properties = new HashMap<>();
         properties.put("otel.experimental.log.capture.threshold", config.instrumentation.logging.level);
         properties.put("otel.micrometer.step.millis", Long.toString(SECONDS.toMillis(config.preview.metricIntervalSeconds)));
-        if (!config.instrumentation.micrometer.enabled) {
-            properties.put("otel.instrumentation.micrometer.enabled", "false");
-            properties.put("otel.instrumentation.actuator-metrics.enabled", "false");
+        if (!config.instrumentation.azureSdk.enabled) {
+            properties.put("otel.instrumentation.azure-sdk.enabled", "false");
+        }
+        if (!config.instrumentation.cassandra.enabled) {
+            properties.put("otel.instrumentation.cassandra.enabled", "false");
         }
         if (!config.instrumentation.jdbc.enabled) {
             properties.put("otel.instrumentation.jdbc.enabled", "false");
         }
-        if (!config.instrumentation.redis.enabled) {
-            properties.put("otel.instrumentation.jedis.enabled", "false");
-            properties.put("otel.instrumentation.lettuce.enabled", "false");
+        if (!config.instrumentation.jms.enabled) {
+            properties.put("otel.instrumentation.jms.enabled", "false");
         }
         if (!config.instrumentation.kafka.enabled) {
             properties.put("otel.instrumentation.kafka.enabled", "false");
         }
-        if (!config.instrumentation.jms.enabled) {
-            properties.put("otel.instrumentation.jms.enabled", "false");
+        if (!config.instrumentation.micrometer.enabled) {
+            properties.put("otel.instrumentation.micrometer.enabled", "false");
+            properties.put("otel.instrumentation.actuator-metrics.enabled", "false");
         }
         if (!config.instrumentation.mongo.enabled) {
             properties.put("otel.instrumentation.mongo.enabled", "false");
         }
-        if (!config.instrumentation.cassandra.enabled) {
-            properties.put("otel.instrumentation.cassandra.enabled", "false");
+        if (!config.instrumentation.redis.enabled) {
+            properties.put("otel.instrumentation.jedis.enabled", "false");
+            properties.put("otel.instrumentation.lettuce.enabled", "false");
         }
         if (!config.instrumentation.springScheduling.enabled) {
             properties.put("otel.instrumentation.spring-scheduling.enabled", "false");

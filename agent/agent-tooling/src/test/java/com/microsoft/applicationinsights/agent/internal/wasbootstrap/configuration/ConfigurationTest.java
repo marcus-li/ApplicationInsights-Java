@@ -368,6 +368,20 @@ public class ConfigurationTest {
     }
 
     @Test
+    public void shouldOverrideInstrumentationAzureSdkEnabled() throws IOException {
+        // TODO update this test once azure sdk instrumentation is enabled by default
+        //  this verification is just to cause failure once it is enabled by default
+        //  so we will remember to update the test
+        assertFalse(loadConfiguration().instrumentation.azureSdk.enabled);
+        envVars.set("APPLICATIONINSIGHTS_INSTRUMENTATION_AZURE_SDK_ENABLED", "true");
+
+        Configuration configuration = loadConfiguration();
+        ConfigurationBuilder.overlayEnvVars(configuration);
+
+        assertTrue(configuration.instrumentation.azureSdk.enabled);
+    }
+
+    @Test
     public void shouldOverrideInstrumentationCassandraEnabled() throws IOException {
         envVars.set("APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED", "false");
 
