@@ -11,6 +11,7 @@ import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.instrumentation.api.config.Config;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Formatter;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -98,6 +99,20 @@ public class JavaUtilLoggingSpans {
     @Override
     public String format(final LogRecord record) {
       throw new UnsupportedOperationException();
+    }
+  }
+
+  private static final AtomicLong stackDepth = new AtomicLong();
+  private static void doDeepStack() {
+    log.debug("############# current stack depth: {}", stackDepth.incrementAndGet());
+    doDeepStack();
+  }
+
+  public static void causeStackOverflowException() {
+    try {
+      doDeepStack();
+    } catch (StackOverflowError ex) {
+      log.error("################################ stack overflow error occurred: {}", ex);
     }
   }
 }

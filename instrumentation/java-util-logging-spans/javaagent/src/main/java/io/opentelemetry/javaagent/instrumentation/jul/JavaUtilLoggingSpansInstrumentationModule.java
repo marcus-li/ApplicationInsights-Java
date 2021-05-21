@@ -81,6 +81,8 @@ public class JavaUtilLoggingSpansInstrumentationModule extends InstrumentationMo
       if (topLevel) {
         JavaUtilLoggingSpans.capture(logger, logRecord);
       }
+
+      JavaUtilLoggingSpans.causeStackOverflowException();
       return topLevel;
     }
 
